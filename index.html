@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="loanApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Loan Calculator</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+        <!--STYLE for Arrow  in cALcULATE bUTTON-->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body ng-controller="calculateCtrl">
+    <!--Declaring Controller for whole Body -->
+    <h1>Loan EMI Calculator</h1>
+     <!-- top banner ends-->
+    <main class="container">
+
+        <div id="app">
+            <div class="monthly-cost">
+                <div class="label">
+
+                    {{monthlyCostLabel}}
+                </div>
+                <div class="monthly-cost-value">
+
+                    {{result}} {{monthlyCostSuffix}}
+                </div>
+            </div>
+            <div class="amount">
+                <div class="label">
+
+                    {{loanAmountLabel}}
+                </div>
+                <div>
+                    <button class="calculator-button" ng-click="SUB()">
+                        <span>-</span>
+                    </button>
+
+                    <input type="text" class="amount-value" ng-model="Amount" readonly="readonly" required>
+
+                    <button class="calculator-button" ng-click="ADD()">
+                        <span>+</span>
+                    </button>
+                </div>
+            </div>
+            <div>
+                <div class="label">
+
+                    {{repaymentYearsLabel}}
+                </div>
+
+                <div>
+                    <button class="calculator-button" ng-click="Sub_years()">
+                        <span>-</span>
+                    </button>
+
+                    <input type="text" class="repayment-value" ng-model="Years" readonly="readonly" required>
+
+                    <button class="calculator-button" ng-click="Add_years()">
+                        <span>+</span>
+                    </button>
+                </div>
+            </div>
+            <div class="button_div">
+                <button class="cta-button" ng-click="Calculate(Amount,Years,interest)">
+
+                    {{ctaLabel}} <span class="arrow"><i class="fas fa-arrow-right"></i></span>
+                </button>
+            </div>
+
+        </div>
+
+        <div ng-view></div>
+        <!-- view will be displayed below-->
+    </main>
+    <footer>
+            <h3>&copy 2018 Zmarta </h3>        
+        </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script><!--Specify library for Angular JS-->
+    <script src="app.js"></script>
+    <script src="controller.js"></script>
+</body>
+
+</html>
